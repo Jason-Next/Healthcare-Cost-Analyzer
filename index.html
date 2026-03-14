@@ -1042,13 +1042,8 @@
                 income: parseFloat(incomeRaw),
                 insurance: parseFloat(insuranceRaw)
             };
-
-            // --- AUTO-DETECT FIX STARTS HERE ---
-            const isLocal = window.location.hostname === "127.0.0.1" || 
-                            window.location.hostname === "localhost" || 
-                            window.location.protocol === "file:";
             
-            const apiUrl = isLocal ? "http://127.0.0.1:8000/predict" : "https://jason-next-healthcare-cost-analyzer.hf.space/predict";
+            const apiUrl = "https://jason-next-healthcare-cost-analyzer.hf.space/predict";
 
             try {
                 const response = await fetch(apiUrl, {
