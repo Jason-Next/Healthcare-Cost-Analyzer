@@ -1048,7 +1048,7 @@
                             window.location.hostname === "localhost" || 
                             window.location.protocol === "file:";
             
-            const apiUrl = isLocal ? "http://127.0.0.1:8000/predict" : "https://jason-next-healthcare-cost-analyzer.hf.space";
+            const apiUrl = isLocal ? "http://127.0.0.1:8000/predict" : "https://jason-next-healthcare-cost-analyzer.hf.space/predict";
 
             try {
                 const response = await fetch(apiUrl, {
