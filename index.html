@@ -593,10 +593,20 @@
                 border-radius: 24px !important;
             }
         }
+
+        /* --- DESKTOP: FORCE STATIC MODAL (NO SCROLLING) --- */
+        @media (min-width: 851px) {
+            .about-card-content {
+                overflow-y: visible !important; 
+            }
+            #aboutModal > div {
+                max-height: none !important; /* Lets the card naturally fit the text */
+            }
+        }
         
         /* --- CLEAN MODAL PADDING --- */
         .about-card-content {
-            padding: 35px; /* Spacious desktop padding */
+            padding: 15px 35px 25px 35px; /* Spacious desktop padding */
         }
         
         @media (max-width: 600px) {
