@@ -568,7 +568,9 @@
 
     <div class="header">
         <h1>Healthcare Cost Exposure Analyzer</h1>
-        <p>Predict your medical costs and discover how lifestyle choices can increase your savings.</p>
+        <p>Predict your medical costs and discover how lifestyle choices can increase your savings. 
+           <a href="javascript:void(0)" onclick="openAbout()" style="color: #93C5FD; text-decoration: underline; cursor: pointer; margin-left: 5px; font-weight: 700;">Learn more</a>
+        </p>
     </div>
 
     <div class="container">
@@ -770,31 +772,57 @@
                     <p style="color: var(--text-muted); font-weight: 600; margin:0;">Complete your profile to see how you can optimize your health and savings.</p>
                 </div>
             </div>
-            <section class="card" style="grid-column: 1 / -1; margin-top: 40px; text-align: left;">
-                <h2 style="border-bottom: 1px solid rgba(255, 255, 255, 0.3); padding-bottom: 15px; margin-bottom: 20px;">
-                    <span class="emoji-icon">ℹ️</span> About the Healthcare Cost Exposure Analyzer
-                </h2>
-                
-                <p style="line-height: 1.8; font-weight: 500; color: var(--text-dark); margin-bottom: 20px;">
-                    This <strong>Healthcare Cost Predictor</strong> utilizes a machine learning model trained on regional medical data to estimate annual claim costs. By evaluating parameters such as <strong>BMI, age, smoking status, and geographical location</strong>, the analyzer provides a transparent view of potential financial exposure.
-                </p>
-                
-                <h3 style="font-size: 1.3rem; margin-top: 25px; color: var(--text-dark); font-weight: 700; margin-bottom: 10px;">
-                    How Lifestyle Impacts Your Health Savings
-                </h3>
-                
-                <p style="line-height: 1.8; font-weight: 500; color: var(--text-dark);">
-                    Beyond basic prediction, this tool serves as an <strong>AI Health Coach</strong>. It calculates a "Path to Savings" by simulating how specific lifestyle improvements—like increasing physical activity or reducing alcohol consumption—can lower your predicted medical risk and insurance premiums.
-                </p>
-    
-                <div style="display: none;">
-                    Keywords: Healthcare Cost Exposure Analyzer, Medical Expense Predictor, AI Healthcare Analytics, Insurance Cost Calculator, Health Savings Simulator, Machine Learning Healthcare Project, DAA Project, Computer Science and Engineering.
+            <div id="aboutModal" style="display: none; position: fixed; z-index: 99999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center;">
+                <div class="card" style="max-width: 600px; width: 90%; max-height: 85vh; overflow-y: auto; position: relative; animation: slideUpFade 0.4s ease-out; background: rgba(255, 255, 255, 0.85); box-sizing: border-box;">
+                    
+                    <span onclick="closeAbout()" style="position: absolute; right: 20px; top: 15px; font-size: 1.8rem; cursor: pointer; color: var(--text-muted); line-height: 1;">&times;</span>
+                    
+                    <h2 style="border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding-bottom: 15px; margin-top: 10px;">
+                        <span class="emoji-icon">ℹ️</span> About the App
+                    </h2>
+                    
+                    <p style="line-height: 1.8; color: var(--text-dark); font-weight: 500;">
+                        This <strong>Healthcare Cost Predictor</strong> utilizes a machine learning model trained on regional medical data to estimate annual claim costs. By evaluating parameters such as <strong>BMI, age, smoking status, and geographical location</strong>, the analyzer provides a transparent view of potential financial exposure.
+                    </p>
+                    
+                    <h3 style="font-size: 1.2rem; margin-top: 20px; color: var(--text-dark); font-weight: 700;">How Lifestyle Impacts Your Health Savings</h3>
+                    <p style="line-height: 1.8; color: var(--text-dark); font-weight: 500;">
+                        Beyond basic prediction, this tool serves as an <strong>AI Health Coach</strong>. It calculates a "Path to Savings" by simulating how specific lifestyle improvements—like increasing physical activity or reducing alcohol consumption—can lower your predicted medical risk and insurance premiums.
+                    </p>
+            
+                    <button class="primary-btn" onclick="closeAbout()" style="margin-top: 20px; padding: 12px; width: 100%;">Got it!</button>
+            
+                    <div style="display: none;">
+                        Keywords: Healthcare Cost Exposure Analyzer, Medical Expense Predictor, AI Healthcare Analytics, Insurance Cost Calculator, Health Savings Simulator, Machine Learning Healthcare Project, DAA Project, Computer Science and Engineering.
+                    </div>
+                    
                 </div>
-            </section>
+            </div>
         </div>
     </div>
 
     <script>
+        // --- MODAL LOGIC ---
+        function openAbout() {
+            const modal = document.getElementById('aboutModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevents the background from scrolling while modal is open
+        }
+
+        function closeAbout() {
+            const modal = document.getElementById('aboutModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restores scrolling
+        }
+
+        // Close modal if user clicks outside the card
+        window.onclick = function(event) {
+            const modal = document.getElementById('aboutModal');
+            if (event.target == modal) {
+                closeAbout();
+            }
+        }
+        
         // --- NATIVE EXPANDING DROPDOWN JAVASCRIPT ---
         // --- SMART INPUT LIMITS & UX ---
         function enforceLimits(input, min, max) {
