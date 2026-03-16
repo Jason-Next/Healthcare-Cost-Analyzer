@@ -820,7 +820,7 @@
             </div>
 
             <div class="card">
-                <h2><span class="emoji-icon">✨</span> Your Path to Savings</h2>
+                <h2 id="advice-title"><span class="emoji-icon">✨</span> Your Path to Savings</h2>
                 <div id="ai-advice-container">
                     <p style="color: var(--text-muted); font-weight: 600; margin:0;">Complete your profile to see how you can optimize your health and savings.</p>
                 </div>
@@ -1224,19 +1224,32 @@
                 const riskSubtext = document.getElementById('res-risk-subtext');
                 
                 // --- 1. SMART 0-INCOME INTERCEPT ---
-                if (parseFloat(incomeRaw) === 0 && data.out_of_pocket > 0) {
-                    bar.style.width = "100%"; // Force bar full
-                    bar.style.backgroundColor = "#991B1B"; // Darkest red
+                const incomeVal = parseFloat(incomeRaw);
+                const insuranceVal = parseFloat(insuranceRaw);
+
+                if (incomeVal === 0 && data.out_of_pocket > 0) {
+                    bar.style.width = "100%"; 
+                    bar.style.backgroundColor = "#991B1B"; 
                     
                     riskBadge.innerText = "MAXIMUM RISK";
                     riskBadge.style.background = "#FEF2F2";
                     riskBadge.style.color = "#991B1B";
                     riskBadge.style.borderColor = "#FECACA";
                     
-                    riskSubtext.innerText = "CRITICAL: With ₹0 income, this out-of-pocket cost cannot be covered and would lead to severe debt.";
+                    // Detect the "Double Zero" Vulnerability
+                    if (insuranceVal === 0) {
+                        riskSubtext.innerText = "CRITICAL: With no insurance and ₹0 income, you are fully exposed to these medical costs.";
+                        document.getElementById('advice-title').innerHTML = '<span class="emoji-icon">🛡️</span> Minimize Your Financial Exposure';
+                    } else {
+                        // They have some insurance, but it wasn't enough to cover the bill
+                        riskSubtext.innerText = "CRITICAL: Your insurance doesn't cover the full amount. With ₹0 income, the remaining cost leads to severe debt.";
+                        document.getElementById('advice-title').innerHTML = '<span class="emoji-icon">📉</span> Lower Your Expected Bill';
+                    }
                 
                 // --- 2. NORMAL PERCENTAGE CALCULATION ---
                 } else {
+                    document.getElementById('advice-title').innerHTML = '<span class="emoji-icon">✨</span> Your Path to Savings';
+                    
                     bar.style.width = Math.min(exposure, 100) + "%";
                     riskSubtext.innerText = `This event would consume ${exposure.toFixed(1)}% of your annual income.`;
 
