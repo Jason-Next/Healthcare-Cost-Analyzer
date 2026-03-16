@@ -2,7 +2,7 @@
 
 An intelligent machine learning application that predicts annual medical costs and simulates lifestyle improvements to discover a **Path to Savings**. 
 
-🚀 **[Live Demo: Check it out on Vercel](https://healthcare-cost-analyzer-frontend.vercel.app/)**
+🚀 **[Live Demo: Check it out on Vercel](https://healthcare-cost-analyzer.vercel.app/)**
 
 ---
 
