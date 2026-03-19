@@ -315,6 +315,10 @@
             opacity: 0;
             transform: translateY(-10px);
             transition: opacity 0.2s ease, transform 0.2s ease;
+            
+            /* THE FIX: Give the list a specific height and turn on vertical scrolling */
+            max-height: 290px; 
+            overflow-y: auto; 
         }
 
         .custom-select-wrapper.open .custom-options {
